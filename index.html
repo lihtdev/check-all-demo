@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>复选框全选</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="./jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			$(':checkbox#all').click(function() {
+				var checked = $(this).prop('checked');
+				$(':checkbox:not(#all)').prop('checked', checked || false);
+			});
+
+			$(':checkbox:not(#all)').click(function() {
+				var checked = $(':checkbox:not(#all):not(:checked)').length <= 0;
+				$(':checkbox#all').prop('checked', checked);
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<ul style="list-style:none;">
+		<li><input id="all" type="checkbox" />全选</li>
+		<li><input name="option" type="checkbox" value="a" />A</li>
+		<li><input name="option" type="checkbox" value="b" />B</li>
+		<li><input name="option" type="checkbox" value="c" />C</li>
+		<li><input name="option" type="checkbox" value="d" />D</li>
+	</ul>
+</body>
+</html>
